@@ -1,0 +1,220 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.chatInputWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border: 2px solid #1976D2;
+  border-radius: 24px;
+  padding: 8px 16px;
+  gap: 4px;
+  transition: all $transition-duration-base $transition-timing-ease;
+  
+  &:focus-within {
+    border-color: #1565C0;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+  }
+}
+
+.filePreviewArea {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.filePreviewChip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #F5F5F5;
+  border: 1px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 6px 10px;
+  max-width: 220px;
+}
+
+.filePreviewThumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.filePreviewDocIcon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E3F2FD;
+  border-radius: 8px;
+  flex-shrink: 0;
+  color: #1976D2;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.filePreviewName {
+  font-size: 12px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.filePreviewClose {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px !important;
+  height: 20px !important;
+  background-color: #fff !important;
+  border: 1px solid #E0E0E0 !important;
+  padding: 2px !important;
+  cursor: pointer;
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  &:hover {
+    background-color: #FFEBEE !important;
+    border-color: #EF5350 !important;
+    color: #EF5350;
+  }
+}
+
+.uploadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.attachButton {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background-color: #F5F5F5;
+  color: #666;
+  padding: 6px;
+  transition: all $transition-duration-base $transition-timing-ease;
+
+  &:hover:not(:disabled) {
+    background-color: #E0E0E0;
+    color: #1976D2;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.inputArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #333;
+  font-family: $font-family-primary;
+  min-width: 0;
+  
+  &::placeholder {
+    color: #666;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.menuItem {
+  padding: 10px 16px;
+  font-size: 14px;
+  gap: 8px;
+
+  &:hover {
+    background-color: #F5F5F5;
+  }
+}
+
+.sendButton {
+  width: 40px;
+  height: 40px;
+  background-color: #1976D2;
+  color: #FFFFFF;
+  padding: 8px;
+  transition: all $transition-duration-base $transition-timing-ease;
+  
+  &:hover:not(:disabled) {
+    background-color: #1565C0;
+  }
+  
+  &:disabled {
+    background-color: #BDBDBD;
+    cursor: not-allowed;
+  }
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.micButton {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 8px;
+  transition: all $transition-duration-base $transition-timing-ease;
+
+  &:hover:not(:disabled) {
+    background-color: #E3F2FD;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,115 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.pageContainer {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contentCard {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #5a6c7d;
+  line-height: 1.5;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 32px;
+}
+
+.backButton {
+  min-width: 120px;
+  padding: 10px 24px;
+  border-color: #d0d7de;
+  color: #2c3e50;
+  text-transform: none;
+  font-weight: 500;
+
+  &:hover {
+    border-color: #2c3e50;
+    background-color: rgba(44, 62, 80, 0.04);
+  }
+}
+
+.editButton {
+  min-width: 120px;
+  padding: 10px 24px;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-transform: none;
+  font-weight: 500;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 40px;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 40px;
+  text-align: center;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 20px;
+  }
+
+  .contentCard {
+    padding: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+}

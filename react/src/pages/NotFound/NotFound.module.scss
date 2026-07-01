@@ -1,0 +1,39 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.notFound {
+  @include flex-center;
+  flex-direction: column;
+  min-height: 70vh;
+  text-align: center;
+  padding: $spacing-8;
+  color: $color-text-primary;
+
+  @include respond-below(md) {
+    padding: $spacing-6;
+  }
+}
+
+.code {
+  font-size: 8rem;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  margin-bottom: $spacing-4;
+  line-height: 1;
+
+  @include respond-below(md) {
+    font-size: 6rem;
+  }
+}
+
+.message {
+  @include heading-2;
+  margin-bottom: $spacing-2;
+}
+
+.description {
+  @include body-text;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-6;
+  max-width: 500px;
+}

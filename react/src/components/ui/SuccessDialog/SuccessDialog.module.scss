@@ -1,0 +1,57 @@
+@use '../../../styles/tokens' as *;
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 0;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  color: #4CAF50;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.mainMessage {
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.subMessage {
+  font-size: 14px;
+  color: $color-text-secondary;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.doneButton {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: none;
+  border-radius: 8px;
+  box-shadow: none;
+  
+  &:hover {
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.25);
+  }
+}

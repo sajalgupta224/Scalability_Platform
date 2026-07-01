@@ -1,0 +1,438 @@
+.wrapper {
+  padding: 24px;
+  background: #f5f7fb;
+  min-height: calc(100vh - 64px);
+}
+
+.pageTitle {
+  margin: 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.subtitle {
+  margin: 8px 0 18px;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.errorBox {
+  max-width: 980px;
+  margin: 0 auto 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #ffe8e8;
+  border: 1px solid #ffb7b7;
+  color: #b00020;
+  font-size: 14px;
+}
+
+.formCard {
+  max-width: 1500px;
+  margin: 0 auto 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #c9dcff;
+  box-shadow: 0 10px 26px rgba(17, 24, 39, 0.08);
+  padding: 22px;
+}
+
+/* ⬆️ Widened to let 3 columns breathe better */
+.formInner {
+  max-width: 1100px; /* 1200px if you want even wider */
+  margin: 0 auto;
+}
+
+/* ---- NEW LAYOUT: Three-column grid for the 5 fields ----
+   Row 1: Graph name | Database | Schema
+   Row 2: Object type | Object name
+   (Mode is not rendered, so no gap) */
+.gridThreeCols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 24px; /* row-gap | column-gap */
+  align-items: start;
+}
+
+.gridItem {
+  min-width: 0; /* Prevent overflow for long labels/values */
+}
+
+/* Field wrapper */
+.selectWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Keep your input/select look-and-feel */
+.select {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #dbe5f5;
+  border-radius: 10px;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #111827;
+  background: #f9fbff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    background: #ffffff;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+/* MUI Autocomplete override to match existing input styling */
+.autocompleteInput {
+  & .MuiOutlinedInput-root {
+    font-size: 14px;
+    color: #111827;
+  }
+
+  & .MuiOutlinedInput-notchedOutline {
+    border-color: #dbe5f5;
+  }
+
+  & .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #2563eb;
+  }
+
+  & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+}
+
+/* Buttons */
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.primaryBtn {
+  min-width: 190px;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #9fb7ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.06s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 8px 18px rgba(79, 110, 255, 0.25);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+/* Graph container */
+.graphCard {
+  max-width: 1500px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #c9dcff;
+  box-shadow: 0 10px 26px rgba(17, 24, 39, 0.08);
+  padding: 12px;
+}
+
+/* Placeholder: only export button, aligned right */
+.graphPlaceholder {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Header above graph: only export button (no db/schema/table line) */
+.graphHeader {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 6px 4px 12px;
+  gap: 12px;
+
+  @media (max-width: 720px) {
+    justify-content: flex-start;
+  }
+}
+
+/* Export button with normal download symbol + text */
+.exportBtn {
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #dbe5f5;
+  background: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.06s ease;
+
+  &:hover {
+    background: #f2f6ff;
+    box-shadow: 0 8px 16px rgba(17, 24, 39, 0.08);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+.exportText {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ---------------- Portion 2 (Clean Table) ---------------- */
+
+.tableSection {
+  padding: 14px 16px 16px;
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tableTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.emptyText {
+  color: #6b7280;
+  padding: 8px 2px;
+  font-size: 14px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e6eefc;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.thead tr {
+  background: #f6f8ff;
+}
+
+.th {
+  text-align: left;
+  padding: 12px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  border-bottom: 1px solid #e6eefc;
+  white-space: nowrap;
+}
+
+.tr {
+  border-bottom: 1px solid #eef2ff;
+}
+
+.td {
+  padding: 12px 12px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.thAction,
+.tdAction {
+  text-align: left;
+  width: 180px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* button base */
+.iconBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;   /* bigger icon */
+  line-height: 1;
+
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.06s ease;
+}
+
+.iconBtn:hover {
+  background: #f8fafc;
+  box-shadow: 0 10px 18px rgba(17, 24, 39, 0.10);
+}
+
+.iconBtn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* ✅ Eye = blue */
+.viewBtn {
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+/* ✅ Dustbin = red */
+.deleteBtn {
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.25);
+}
+
+/* Graph count badge in header */
+.graphCount {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Object cell: name + type stacked */
+.objectCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.objectName {
+  font-weight: 600;
+  color: #111827;
+  font-size: 13px;
+}
+
+.objectType {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Direction badge */
+.dirBadge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.dirUPSTREAM {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.dirDOWNSTREAM {
+  background: #ecfeff;
+  color: #0891b2;
+  border: 1px solid rgba(8, 145, 178, 0.2);
+}
+
+.dirBOTH {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+/* ---------------- Responsive Rules ---------------- */
+
+/* Optional: intermediate step where 3 cols → 2 cols */
+@media (max-width: 1280px) {
+  .gridThreeCols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Phone / narrow screens: single column */
+@media (max-width: 900px) {
+  .gridThreeCols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- Legacy (safe to remove if unused) ---------------- */
+/* These were used by the old two-column layout */
+.twoColGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px;
+  row-gap: 0;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* If you used this elsewhere, keep it; otherwise can remove */
+.selectRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}

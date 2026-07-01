@@ -1,0 +1,55 @@
+@use '../../../styles/tokens' as *;
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: $color-border;
+  margin: $spacing-4 0;
+}
+
+.modelsSection {
+  /* visible by default; hidden only when parent has .hideModels */
+
+  padding: 0 $spacing-2;
+
+  :global(.MuiOutlinedInput-root) {
+    border-radius: $border-radius-2xl;
+    background-color: $color-background;
+    border: $border-width-thin solid $color-border;
+
+    &:hover {
+      border-color: $color-border-dark;
+    }
+
+    &.Mui-focused {
+      border-color: $color-primary;
+    }
+
+    fieldset {
+      border: none;
+    }
+  }
+
+  :global(.MuiAutocomplete-tag) {
+    border-radius: $border-radius-full;
+  }
+}
+
+/* When a parent container uses .hideModels, hide the models section. */
+.hideModels {
+  .modelsSection {
+    display: none !important;
+  }
+}
+
+.modelsHint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #666;
+}

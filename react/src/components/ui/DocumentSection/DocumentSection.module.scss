@@ -1,0 +1,173 @@
+
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+/* ---------------------------
+   Local fallbacks for tokens
+   --------------------------- */
+$radius-sm: 4px !default;
+$radius-xs: 2px !default;
+
+/* Some design tokens may not exist; provide safe fallbacks */
+$color-black: #000 !default;
+$transition-colors: color 120ms ease-in-out, background-color 120ms ease-in-out !default;
+
+/* If your icon tokens are absent, these keep sizing sensible */
+$icon-size-sm: 16px !default;
+$icon-size-md: 18px !default;
+
+/* ---------------------------
+   Component styles
+   --------------------------- */
+.documentSection {
+  display: flex;
+  flex-direction: column;
+  padding: 0 $spacing-4; // 0 horizontal, 16px vertical padding in parent if applicable
+  gap: $spacing-4; // 16px spacing
+
+  /* Normalize interactive elements so they look inline/text-like */
+  button,
+  .iconButton {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  /* Main heading: "Referred documents" */
+  .heading {
+    font-size: $font-size-lg; // 20px
+    font-weight: $font-weight-semibold; // 600
+    color: $color-gray-600; // #757575
+    margin: 0;
+    line-height: $line-height-tight; // 1.2
+  }
+
+  /* Container for document list */
+  .documentList {
+    display: flex;
+    flex-direction: column;
+    gap: 0; // Use hover as the visual separator instead of borders
+  }
+
+  /* Empty state message */
+  .emptyState {
+    font-size: $font-size-sm; // 14px
+    color: $color-text-disabled; // #999999
+    padding: $spacing-2 0; // 8px vertical padding
+  }
+
+  /* Individual document item (single-line row) */
+  .docItem {
+    @include flex-between; // space-between alignment
+    align-items: center;
+    padding: $spacing-3 0; // 12px vertical, 0 horizontal
+    gap: $spacing-3; // 12px gap between left and right
+    border-radius: $radius-sm;
+
+    /* Subtle hover like the reference */
+    &:hover {
+      /* Use rgba fallback in case $color-black isn't defined elsewhere */
+      background: rgba($color-black, 0.03);
+    }
+
+    &:last-child {
+      border-bottom: none; // Remove border from last item if borders are used elsewhere
+    }
+
+    /* Left side: Icon + Text */
+    .docContent {
+      display: flex;
+      align-items: center;
+      gap: $spacing-3; // 12px gap between icon and text
+      flex: 1 1 auto; // take available space
+      min-width: 0; // allow text truncation (critical)
+    }
+
+    /* PDF icon wrapper - keeps icon from shrinking */
+    .iconWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0; // Don't shrink
+    }
+
+    /* Document icon styling (sized to match subtle look) */
+    .pdfIcon {
+      /* Use small size to match the subtle look */
+      width: $icon-size-md;   // 18px default
+      height: $icon-size-md;  // 18px default
+      display: block;
+
+      /* If using MUI SvgIcon: override via font-size too */
+      font-size: $icon-size-md;
+    }
+
+    /* Document text (clickable like a link but not bold) */
+    .docText {
+      font-size: $font-size-sm; // 14px
+      color: $color-text-primary; // #333333
+      line-height: $line-height-normal; // 1.5
+      font-weight: $font-weight-normal; // 400
+
+      /* Keep on one line and truncate */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      /* Interactive states (if you attach onClick to the text element) */
+      &:hover {
+        text-decoration: underline;
+      }
+      &:focus-visible {
+        outline: 2px solid $color-primary; // visible focus ring
+        outline-offset: 2px;
+        border-radius: $radius-xs;
+      }
+    }
+
+    /* Right side: action buttons (external link icon) */
+    .actionButtons {
+      display: flex;
+      align-items: center;
+      gap: $spacing-1; // 4px between buttons
+      flex: 0 0 auto; // prevent shrinking; keeps icon on the same line at the far right
+
+      .iconWrapper {
+        cursor: pointer;
+        border-radius: $radius-sm;
+      }
+
+      /* Icon button styling (subtle) */
+      .iconButton {
+        color: $color-gray-500; // muted
+        padding: $spacing-1; // 4px padding (reasonable click target)
+        transition: $transition-colors;
+
+        &:hover {
+          color: $color-primary; // e.g., #0F62FE on hover
+          background-color: rgba($color-primary, 0.08);
+        }
+
+        &:focus-visible {
+          outline: 2px solid $color-primary;
+          outline-offset: 2px;
+          border-radius: $radius-sm;
+        }
+
+        /* Icon size inside MUI IconButtons */
+        :global(.MuiSvgIcon-root) {
+          font-size: $icon-size-sm; // 16px default
+          opacity: 0.6;
+          transition: opacity 120ms ease-in-out;
+        }
+
+        &:hover :global(.MuiSvgIcon-root) {
+          opacity: 0.9;
+        }
+           }
+    }
+  }
+}

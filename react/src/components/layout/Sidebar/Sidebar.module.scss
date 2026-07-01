@@ -1,0 +1,223 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.sidebar {
+  width: $sidebar-width;
+  background-color: $color-background-dark;
+  color: $color-text-inverse;
+  display: flex;
+  flex-direction: column;
+  transition: width $transition-duration-slow $transition-timing-ease;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+
+  @include respond-below(md) {
+    position: fixed;
+    left: 0;
+    top: $header-height;
+    bottom: 0;
+    z-index: $z-index-fixed;
+    transform: translateX(-100%);
+
+    &:not(.collapsed) {
+      transform: translateX(0);
+    }
+  }
+}
+
+.collapsed {
+  width: $sidebar-collapsed-width;
+  padding: 1rem 1rem 0 1.2rem;
+
+  @include respond-below(md) {
+    transform: translateX(-100%);
+  }
+}
+
+.toggleWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 $spacing-3;
+  margin-bottom: $spacing-1;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: $color-text-inverse;
+  cursor: pointer;
+  font-size: $font-size-xl;
+  padding: $spacing-2;
+  border-radius: $border-radius-md;
+  transition: $transition-colors;
+
+  &:hover {
+    background-color: rgba($color-white, 0.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary-light;
+    outline-offset: 2px;
+  }
+}
+
+.nav {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.link {
+  @include flex-start;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  text-decoration: none;
+  color: $color-text-inverse;
+  font-size: $font-size-sm;
+  border-radius: $border-radius-md;
+  transition: $transition-colors;
+  margin: 0 $spacing-2 $spacing-1;
+
+  &:hover {
+    border-radius: 0;
+    border-radius: 0;
+    border-left: 2px solid rgba($color-primary, 1);
+    color: rgba($color-primary, 1);
+    text-decoration: none;
+
+    .icon {
+      .iconImgDefault {
+        opacity: 0;
+      }
+      .iconImgActive {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:focus,
+  &:active {
+    /* remove outline for mouse click/focus */
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    /* keep visible focus ring for keyboard users */
+    text-decoration: none;
+    outline: 2px solid $color-primary-light;
+    outline-offset: -2px;
+  }
+
+  img {
+    border: none;
+    text-decoration: none;
+    display: block;
+  }
+}
+
+.active {
+  color: rgba($color-primary, 1);
+  border-radius: 0;
+  border-left: 2px solid rgba($color-primary, 1);
+
+  .icon {
+    .iconImgDefault {
+      opacity: 0;
+    }
+    .iconImgActive {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    border-radius: 0;
+    border-left: 2px solid rgba($color-primary, 1);
+    text-decoration: none;
+  }
+}
+
+.icon {
+  @include flex-center;
+  min-width: $icon-size-md;
+  height: $icon-size-md;
+  position: relative;
+
+  svg {
+    width: $icon-size-sm;
+    height: $icon-size-sm;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $icon-size-sm;
+    height: $icon-size-sm;
+    transition: opacity $transition-duration-base $transition-timing-ease;
+    display: block;
+  }
+
+  .iconImgDefault {
+    opacity: 1;
+  }
+
+  .iconImgActive {
+    opacity: 0;
+  }
+}
+
+.label {
+  white-space: nowrap;
+  transition: opacity $transition-duration-base $transition-timing-ease;
+}
+
+// Collapsed state: stacked label below icon
+.collapsed .link {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-1;
+  padding: 10px;
+}
+
+.collapsed .label {
+  font-size: $font-size-xs;
+  text-align: center;
+}
+
+// Mobile overlay when sidebar is open
+@include respond-below(md) {
+  .sidebar:not(.collapsed)::before {
+    content: '';
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color-black, 0.5);
+    z-index: -1;
+  }
+}
+
+/* Make sidebar nav vertical without changing other styles */
+.sidebar .nav ul {
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+}
+
+.sidebar .nav li {
+  width: 100%; /* ensure each item spans the sidebar's width */
+}
+
+.sidebar .link {
+  width: 100%; /* clickable area spans full width */
+}
+
+/* Optional: allow scrolling if the list gets taller than the viewport */
+.sidebar {
+  overflow-y: auto;
+}

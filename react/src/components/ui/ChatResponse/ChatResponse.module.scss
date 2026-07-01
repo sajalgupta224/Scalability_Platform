@@ -1,0 +1,239 @@
+.chatResponse {
+  margin-bottom: 24px;
+}
+ 
+.container {
+  margin-bottom: 16px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+ 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1976d2;
+  letter-spacing: 0.5px;
+}
+ 
+.logo {
+  width: 28px;
+  height: 28px;
+}
+ 
+.refreshBtn {
+  color: #1976d2;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background-color 120ms ease;
+}
+ 
+.refreshBtn:hover {
+  background-color: rgba(25, 118, 210, 0.08);
+}
+ 
+.refreshBtn svg {
+  width: 20px;
+  height: 20px;
+}
+ 
+ 
+.botContent {
+  color: #333;
+  line-height: 1.55;
+  font-size: 15px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
+}
+ 
+/* Paragraphs */
+.botContent p {
+  margin: 0 0 8px;
+}
+ 
+.botContent p:last-child {
+  margin-bottom: 0;
+}
+ 
+/* Fix empty bullets */
+.botContent li:empty {
+  display: none;
+}
+ 
+/* Fix <li><p> layout */
+.botContent li > p {
+  margin: 0 !important;
+  display: inline !important;
+}
+ 
+/* FIXED ORDERED & UNORDERED LISTS */
+.botContent ul,
+.botContent ol {
+  margin: 6px 0;
+  padding-left: 20px; /* FIX: good indentation */
+}
+ 
+/* FIXED LIST ITEM SPACING */
+.botContent li {
+  margin: 4px 0;
+  padding-left: 0;
+  line-height: 1.45;
+}
+ 
+/* Number list markers styling */
+.botContent ol > li::marker {
+  font-weight: 600;
+  color: #222;
+}
+ 
+/* Nested lists */
+.botContent li ul,
+.botContent li ol {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+ 
+.botContent li ul li,
+.botContent li ol li {
+  margin: 2px 0;
+}
+ 
+/* Blockquotes */
+.botContent blockquote {
+  border-left: 3px solid #1976d2;
+  padding-left: 12px;
+  margin: 12px 0;
+  color: #444;
+  font-style: italic;
+}
+ 
+/* Inline code */
+.botContent code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 90%;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+ 
+/* Fenced code block container */
+.botContent pre {
+  white-space: pre-wrap !important;
+  margin: 12px 0;
+  background: #fafafa;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+ 
+/* Fenced code content */
+.botContent pre code {
+  display: block;
+  background: none !important;
+  padding: 0 !important;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+ 
+/* Tables (markdown tables rendered by ReactMarkdown) */
+.botContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+  overflow-x: auto;
+  display: block;
+}
+ 
+.botContent thead {
+  background: #f5f7fa;
+}
+ 
+.botContent th,
+.botContent td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+ 
+.botContent th {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+ 
+.botContent tr:nth-child(even) {
+  background: #fafbfc;
+}
+ 
+.botContent tr:hover {
+  background: rgba(25, 118, 210, 0.04);
+}
+ 
+.showDetailsRow {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+ 
+.showDetailsBtn {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #333;
+  padding: 4px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+ 
+/* Collapsible details */
+.detailsBox {
+  max-width: 360px;
+  transition: all 240ms ease-in-out;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 0;
+}
+ 
+.detailsBoxOpen {
+  max-width: 900px;
+  max-height: 400px;
+  opacity: 1;
+  background: transparent;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(15, 15, 15, 0.03);
+}
+ 
+.detailsContent {
+  color: #222;
+}
+ 
+.thinkingText {
+  margin-top: 8px;
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 13px;
+  color: #333;
+}
+ 
+/* Prevent details section from affecting markdown */
+.detailsBox *:not(.thinkingText),
+.detailsBoxOpen *:not(.thinkingText) {
+  white-space: normal !important;
+}
+ 

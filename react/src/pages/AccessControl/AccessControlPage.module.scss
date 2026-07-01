@@ -1,0 +1,356 @@
+:root {
+  --primary-text: #000000;
+  --secondary-border: #e9eaeb;
+  --table-head: #f2f2f2;
+  --bg: #ffffff;
+
+  --green: #24a148;
+  --red: #ed6466;
+
+  --stroke-blue: #a4c4fc;
+  --stroke-blue-strong: #7ea9ff;
+
+  --heading-blue: #1565c0;
+}
+
+.page {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 18px 28px;
+  background: var(--bg);
+  flex: 1 1 auto;
+  align-self: stretch;
+}
+
+.center {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Settings + Heading near sidebar */
+.settingsLabel {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-text);
+  margin: 0 0 6px 0;
+
+  &::after {
+    content: 'Heading';
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--heading-blue);
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-text);
+  margin: 14px 0 16px;
+  line-height: 1.35;
+}
+
+:global(.MuiAlert-root) {
+  max-width: 1100px;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+/* Card */
+.card {
+  width: 1100px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px solid var(--secondary-border);
+  box-shadow: none !important;
+}
+
+.cardTitle {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-text);
+  margin: 6px 0 12px;
+}
+
+/* MUI Select */
+:global(.MuiInputLabel-root) {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+:global(.MuiOutlinedInput-root) {
+  border-radius: 6px;
+  background: var(--bg);
+  height: 38px;
+}
+
+:global(.MuiOutlinedInput-notchedOutline) {
+  border-color: var(--secondary-border);
+}
+
+:global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
+  border-color: var(--secondary-border);
+}
+
+:global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline) {
+  border-color: var(--secondary-border);
+  border-width: 1px;
+}
+
+:global(.MuiSelect-select) {
+  font-size: 12px;
+  padding: 8px 10px !important;
+  color: var(--primary-text);
+}
+
+/* ✅ FIX: keep “Permissions for Role: raise_admin” side-by-side */
+.subTitle {
+  margin: 12px 0 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--primary-text);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px; /* small space */
+
+  width: 100%;
+
+  b {
+    font-weight: 600;
+  }
+
+  /* keep icon at far right only */
+  &::after {
+    content: '?';
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    color: rgba(0, 0, 0, 0.55);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--bg);
+
+    margin-left: auto; /* ✅ pushes only icon to right */
+  }
+}
+
+/* Checkbox grid */
+.checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  column-gap: 70px;
+  row-gap: 10px;
+  margin-bottom: 14px;
+}
+
+:global(.MuiFormControlLabel-root) {
+  margin: 0;
+  align-items: center;
+}
+
+:global(.MuiFormControlLabel-label) {
+  font-size: 11px;
+  color: var(--primary-text);
+}
+
+:global(.MuiCheckbox-root) {
+  padding: 4px 8px 4px 0;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+:global(.MuiCheckbox-root.Mui-checked) {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+:global(.MuiButton-containedSuccess) {
+  text-transform: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: none;
+  background: var(--green);
+}
+
+:global(.MuiButton-containedSuccess:hover) {
+  background: #1e8a3e;
+}
+
+:global(.MuiButton-containedSuccess.Mui-disabled) {
+  background: var(--secondary-border) !important;
+  color: rgba(0, 0, 0, 0.35) !important;
+}
+
+.hint {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+:global(.MuiDivider-root) {
+  border-color: var(--secondary-border);
+}
+
+/* Section title */
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-text);
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &::after {
+    content: '?';
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    color: rgba(0, 0, 0, 0.55);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--bg);
+    margin-left: 10px;
+    flex: 0 0 auto;
+  }
+}
+
+.groupsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+  margin-top: 12px;
+}
+
+.groupCard {
+  border: 1px solid var(--secondary-border);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff;
+}
+
+.groupTitle {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.childrenList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px 0;
+  align-items: flex-start;
+  padding-left: 0;
+}
+
+.groupCard :global(.MuiFormControlLabel-root) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 8px 6px 0;
+}
+
+.groupCard :global(.MuiFormControlLabel-label) {
+  font-size: 12px;
+  color: var(--primary-text);
+}
+
+.groupCard :global(.MuiFormGroup-root) {
+  display: block;
+}
+
+.groupCard :global(.MuiFormControlLabel-root) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.card {
+  width: 1100px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px solid var(--secondary-border);
+  box-shadow: none !important;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: max-content;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--secondary-border);
+}
+
+.table th,
+.table td {
+  white-space: nowrap;
+}
+
+.table thead th {
+  position: relative;
+  background: #fff;
+  z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  .card {
+    width: 92vw;
+    max-width: 92vw;
+  }
+
+  .checkboxGrid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    column-gap: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 16px;
+  }
+
+  .checkboxGrid {
+    grid-template-columns: 1fr;
+  }
+}

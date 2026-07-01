@@ -1,0 +1,21 @@
+/* If you're writing plain CSS, replace // comments with /* ... *\/ */
+/* GRID: one horizontal row that scrolls */
+.templates-grid {
+  /* use grid instead of block */
+  display: grid;
+  grid-auto-flow: column;         /* lay items left→right in a single row */
+  grid-auto-columns: 250px;       /* each card slot is 250px wide */
+  gap: 20px;
+
+  /* scrolling + sizing */
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  padding: 0 10px;
+  margin: 40px 0 32px 0;
+  position: relative;
+
+  /* ensure the grid can exceed container width so scroll appears */
+  width: 100%;
+  min-width: 0;
+}

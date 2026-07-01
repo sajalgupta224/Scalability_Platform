@@ -1,0 +1,72 @@
+@use '../../../styles/tokens' as *;
+
+.alertBanner {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  border-radius: 8px;
+  border-left: 4px solid;
+
+  .icon {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    flex-shrink: 0;
+
+    svg {
+      font-size: 20px;
+    }
+  }
+
+  .message {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  // Warning variant - Exact Figma colors
+  &.warning {
+    background-color: #FFEBEE;
+    border-color: #EF5350;
+
+    .icon,
+    .message {
+      color: #C62828;
+    }
+  }
+
+  // Error variant
+  &.error {
+    background-color: #FFCDD2;
+    border-color: #E57373;
+
+    .icon,
+    .message {
+      color: #B71C1C;
+    }
+  }
+
+  // Info variant
+  &.info {
+    background-color: #E3F2FD;
+    border-color: #64B5F6;
+
+    .icon,
+    .message {
+      color: #1565C0;
+    }
+  }
+
+  // Success variant
+  &.success {
+    background-color: #E8F5E9;
+    border-color: #81C784;
+
+    .icon,
+    .message {
+      color: #2E7D32;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.panel {
+  position: fixed;
+  top: $header-height;
+  right: 0;
+  bottom: 0;
+  width: 28%;
+  @at-root [class*="modelComparisonEnabled"] & {
+    width: 37%;
+  }
+  background-color: $color-background;
+  border-left: $border-width-thin solid $color-border-light;
+  display: flex;
+  flex-direction: column;
+  transition: transform $transition-duration-slow $transition-timing-ease;
+  z-index: $z-index-sticky;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  
+  &.collapsed {
+    transform: translateX(100%);
+  }
+  
+  &.expanded {
+    transform: translateX(0);
+  }
+  
+  @include respond-below(lg) {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: $spacing-4 $spacing-5;
+  background-color: $color-background;
+  @at-root [class*="modelComparisonEnabled"] & {
+    background-color: #F0F4F9;
+  }
+  flex-shrink: 0;
+  min-height: 64px;
+}
+
+.backButton {
+  color: $color-text-primary;
+  padding: $spacing-2;
+  
+  &:hover {
+    background-color: rgba($color-text-secondary, 0.08);
+  }
+  
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.toggleButtonExpanded {
+  display: flex;
+  align-items: center;
+}
+
+.expandedButton {
+  padding: $spacing-2;
+  
+  &:hover {
+    background-color: rgba($color-text-secondary, 0.08);
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: $spacing-4 $spacing-5;
+  @at-root [class*="modelComparisonEnabled"] & {
+    background-color: #F0F4F9;
+  }
+  
+  @include custom-scrollbar;
+  .section{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .innerContent{
+        flex: 1;
+        overflow-y: auto;
+        @include custom-scrollbar;
+    }
+  }
+}
+
+// Collapsed toggle button (when panel is hidden)
+.collapsedToggle {
+  position: fixed;
+  top: calc($header-height + $spacing-3);
+  right: $spacing-4;
+  z-index: $z-index-sticky;
+}
+
+.collapsedButton {
+    // TODO
+}
+
+// Toggle icon (panel-like icon)
+.toggleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 24px;
+  height: 24px;
+}
+
+.iconLeft {
+  width: 12px;
+  height: 20px;
+  background-color: #424242;
+  border-radius: 2px 0 0 2px;
+}
+
+.iconRight {
+  width: 8px;
+  height: 20px;
+  background-color: #E0E0E0;
+  border-radius: 0 2px 2px 0;
+  border: 1px solid #424242;
+}

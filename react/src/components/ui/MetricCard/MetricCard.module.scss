@@ -1,0 +1,86 @@
+@use '../../../styles/tokens' as *;
+
+.metricCard {
+  background-color: $color-white;
+  border: 1px solid $color-gray-300;
+  border-radius: 8px;
+  padding: $spacing-5;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .iconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      font-size: 24px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
+
+    .value {
+      font-size: 36px;
+      font-weight: 700;
+      color: $color-text-primary;
+      line-height: 1.2;
+    }
+
+    .label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #666666;
+      margin-bottom: $spacing-1;
+    }
+
+    .trend {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+
+      .trendIcon {
+        font-size: 16px;
+      }
+
+      .trendValue {
+        font-weight: 600;
+      }
+
+      .trendLabel {
+        color: #999999;
+        font-weight: 400;
+      }
+
+      &.positive {
+        color: $color-success;
+
+        .trendLabel {
+          color: #999999;
+        }
+      }
+
+      &.negative {
+        color: $color-error;
+
+        .trendLabel {
+          color: #999999;
+        }
+      }
+    }
+  }
+}

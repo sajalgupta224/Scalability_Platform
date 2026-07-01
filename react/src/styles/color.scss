@@ -1,0 +1,38 @@
+// Define primary color palette
+$primary-color: #3498db; // Blue
+$primary-light: #5dade2;
+$primary-dark: #2e86c1;
+
+// Define secondary color palette
+$secondary-color: #e74c3c; // Red
+$secondary-light: #ec7063;
+$secondary-dark: #cb4335;
+
+// Neutral colors
+$white: #ffffff;
+$black: #000000;
+$gray-light: #d5d8dc;
+$gray-dark: #7f8c8d;
+$gray-border: #797979;
+
+// Accent colors
+$success: #28a745; // Green
+$warning: #ffc107; // Yellow
+$error: #dc3545;   // Red
+
+// Exported color map for easy use
+$colors: (
+    primary: $primary-color,
+    primary-light: $primary-light,
+    primary-dark: $primary-dark,
+    secondary: $secondary-color,
+    secondary-light: $secondary-light,
+    secondary-dark: $secondary-dark,
+    white: $white,
+    black: $black,
+    gray-light: $gray-light,
+    gray-dark: $gray-dark,
+    success: $success,
+    warning: $warning,
+    error: $error,
+);

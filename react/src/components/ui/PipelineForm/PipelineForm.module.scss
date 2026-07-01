@@ -1,0 +1,374 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+// ============================================
+// PIPELINE FORM — Professional Layout System
+// ============================================
+
+// --- Root Form Container ---
+.formCard {
+  background-color: $color-white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-8;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @include respond-below(md) {
+    padding: $spacing-5;
+  }
+}
+
+// --- Header ---
+.formHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-4;
+  margin-bottom: $spacing-6;
+}
+
+.formHeaderIcon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: $border-radius-full;
+  background-color: #eaf3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    font-size: $icon-size-md;
+    color: $color-primary;
+  }
+}
+
+.formTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.formSubtitle {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-top: 2px;
+}
+
+// --- Form Sections ---
+.formSection {
+  margin-top: $spacing-6;
+
+  @include respond-below(md) {
+    margin-top: $spacing-5;
+  }
+}
+
+.sectionLabel {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: $spacing-3;
+}
+
+.sectionDivider {
+  border: none;
+  border-top: 2px solid #e8f0fe;
+  margin: $spacing-6 0 $spacing-3;
+
+  @include respond-below(md) {
+    margin: $spacing-5 0 $spacing-3;
+  }
+}
+
+.sectionHeading {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-3;
+}
+
+.fieldLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin-bottom: $spacing-1;
+}
+
+.helperText {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-1;
+}
+
+// --- Field Layouts ---
+.fieldRow {
+  display: flex;
+  gap: $spacing-4;
+  margin-top: $spacing-5;
+
+  @include respond-below(sm) {
+    flex-direction: column;
+    gap: $spacing-3;
+  }
+}
+
+.fieldColumn {
+  flex: 1;
+  min-width: 0; // prevent flex overflow
+}
+
+// --- Pipeline Name ---
+.pipelineNameWrapper {
+  position: relative;
+  margin-bottom: $spacing-5;
+}
+
+.helpIconButton {
+  position: absolute;
+  right: -$spacing-10;
+  top: $spacing-2;
+  color: $color-text-disabled;
+  padding: 0;
+
+  &:hover {
+    color: $color-primary;
+    background-color: transparent;
+  }
+
+  svg {
+    font-size: $icon-size-sm;
+  }
+}
+
+// --- Document Source Panel ---
+.documentSourceWrapper {
+  margin-top: $spacing-5;
+}
+
+.documentSourceLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-2;
+}
+
+.optionalText {
+  font-weight: $font-weight-normal;
+  color: $color-text-tertiary;
+}
+
+.documentSourcePanel {
+  border: $border-width-thin solid $color-border-dark;
+  border-radius: $border-radius-md;
+  padding: $spacing-4;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  transition: border-color $transition-duration-fast $transition-timing-ease;
+
+  &:focus-within {
+    border-color: $color-primary-light;
+  }
+}
+
+.documentSourcePanelError {
+  border-color: $color-error;
+}
+
+.documentSourceRow {
+  display: flex;
+  gap: $spacing-3;
+  align-items: flex-start;
+
+  @include respond-below(sm) {
+    flex-direction: column;
+  }
+}
+
+.documentSourceField {
+  flex: 1;
+  min-width: 0;
+}
+
+// --- Upload Zone ---
+.uploadZone {
+  min-height: 48px;
+  border: $border-width-thin solid $color-border-dark;
+  border-radius: $border-radius-sm + 2;
+  padding: 0 $spacing-3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: $color-white;
+  transition: all $transition-duration-fast $transition-timing-ease;
+
+  &:hover {
+    border-color: $color-primary;
+    background-color: #f8fbff;
+  }
+}
+
+.uploadZoneDisabled {
+  cursor: not-allowed;
+
+  &:hover {
+    border-color: $color-border-dark;
+    background-color: $color-white;
+  }
+}
+
+.uploadZoneError {
+  border-color: $color-error;
+}
+
+.uploadZoneContent {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
+.uploadIcon {
+  color: $color-primary;
+  font-size: $icon-size-sm;
+}
+
+.uploadFileName {
+  font-size: 13px;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.uploadHint {
+  font-size: 11px;
+  color: $color-text-tertiary;
+}
+
+.uploadActions {
+  display: flex;
+  gap: $spacing-2;
+  margin-top: $spacing-1;
+}
+
+// --- Chunking Configuration ---
+.chunkingSection {
+  margin-top: $spacing-5;
+  padding: $spacing-4;
+  background-color: $color-white;
+  border: $border-width-thin solid $color-border-dark;
+  border-radius: $border-radius-md;
+
+  @include respond-below(md) {
+    padding: $spacing-3;
+  }
+}
+
+.chunkingSectionTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-3;
+}
+
+.chunkingMethodRow {
+  margin-bottom: $spacing-4;
+}
+
+.chunkingParamsRow {
+  display: flex;
+  gap: $spacing-4;
+
+  @include respond-below(sm) {
+    flex-direction: column;
+    gap: $spacing-3;
+  }
+}
+
+.chunkingField {
+  flex: 1;
+}
+
+.chunkingInfoAlert {
+  margin-top: $spacing-4;
+  border-radius: $border-radius-sm + 2;
+  font-size: $font-size-xs;
+}
+
+// --- Table Config Cards ---
+.tableConfigCard {
+  margin-top: $spacing-3;
+  padding: $spacing-4;
+  border: $border-width-thin solid $color-border-light;
+  border-radius: $border-radius-md;
+  background-color: $color-white;
+}
+
+.tableConfigTitle {
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-2;
+  color: $color-text-primary;
+}
+
+.tableConfigFields {
+  display: flex;
+  gap: $spacing-3;
+
+  @include respond-below(sm) {
+    flex-direction: column;
+  }
+}
+
+// --- Error Text ---
+.errorText {
+  color: $color-error;
+  font-size: $font-size-xs;
+  margin-top: $spacing-1;
+}
+
+// --- Action Bar ---
+.actionBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: $spacing-8;
+  padding-top: $spacing-5;
+  border-top: $border-width-thin solid $color-border-light;
+
+  @include respond-below(sm) {
+    flex-direction: column-reverse;
+    gap: $spacing-3;
+
+    > * {
+      width: 100%;
+    }
+  }
+}
+
+.backButton {
+  color: $color-primary;
+  border-color: $color-primary;
+
+  &:hover {
+    background-color: rgba($color-primary, 0.04);
+    border-color: $color-primary-dark;
+  }
+}
+
+.nextButton {
+  background-color: $color-primary;
+  color: $color-white;
+  min-width: 120px;
+
+  &:hover:not(:disabled) {
+    background-color: $color-primary-dark;
+  }
+
+  &:disabled {
+    background-color: $color-gray-300;
+    color: $color-text-disabled;
+  }
+}

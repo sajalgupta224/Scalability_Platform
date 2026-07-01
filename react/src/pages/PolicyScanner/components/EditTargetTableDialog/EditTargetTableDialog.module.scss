@@ -1,0 +1,108 @@
+@use '../../../../styles/tokens' as *;
+@use '../../../../styles/color.scss' as *;
+
+.dialogContent {
+  padding: 32px 48px;
+  min-height: 200px;
+  min-width: 700px;
+}
+
+.fieldRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.fieldWrapper {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.fieldWrapperFull {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.select {
+  :global(.MuiOutlinedInput-root) {
+    border-radius: 8px;
+    background-color: #ffffff;
+
+    fieldset {
+      border: 1px solid #2563eb;
+    }
+
+    &:hover fieldset {
+      border-color: #2563eb;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #2563eb;
+      border-width: 1px;
+    }
+
+    :global(.MuiSelect-select) {
+      padding: 12px 14px;
+    }
+  }
+}
+
+.textField {
+  :global(.MuiOutlinedInput-root) {
+    border-radius: 8px;
+    background-color: #ffffff;
+
+    fieldset {
+      border: 1px solid #2563eb;
+    }
+
+    &:hover fieldset {
+      border-color: #2563eb;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #2563eb;
+      border-width: 1px;
+    }
+  }
+}
+
+.helpIcon {
+  color: $color-text-secondary;
+  flex-shrink: 0;
+  margin-top: 8px;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+.confirmButton {
+  min-width: 120px;
+  height: 44px;
+  border-radius: 8px;
+  text-transform: none;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  background-color: #2563eb !important;
+  color: #fff !important;
+
+  &:hover {
+    background-color: #1d4ed8 !important;
+  }
+
+  &:disabled {
+    background-color: #e0e0e0 !important;
+    color: #a0a0a0 !important;
+  }
+}

@@ -1,0 +1,124 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.errorMonitoring {
+  padding: $spacing-8;
+  background-color: $color-background;
+  min-height: 100vh;
+
+  @media (max-width: 768px) {
+    padding: $spacing-6 $spacing-4;
+  }
+
+  .filtersRow {
+    display: flex;
+    gap: $spacing-6;
+    margin: $spacing-6 0 $spacing-8;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: $spacing-4;
+    }
+
+    > div {
+      flex: 1;
+      min-width: 250px;
+
+      @media (max-width: 768px) {
+        min-width: 100%;
+      }
+    }
+  }
+
+  .chartsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-6;
+    margin: $spacing-8 0;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.errorMonitoring {
+  background-color: #f9f9f9; /* Light background */
+  color: #333; /* Dark text */
+  padding: 20px;
+}
+
+.filtersRow {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.chartContainer {
+  background-color: #fff; /* White card background */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.errorTable {
+  margin-top: 20px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+
+  th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: bold;
+  }
+
+  td {
+    color: #333;
+  }
+}
+.errorMonitoring {
+  // existing styles…
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Push toggle to top-right */
+  gap: 16px;
+  margin-bottom: 12px; /* space below header */
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.notifyToggle {
+  margin-left: auto;
+  user-select: none;
+
+  /* Optional subtle styling to align label nicely */
+  .MuiFormControlLabel-label {
+    font-weight: 500;
+    margin-right: 6px; /* space between label and switch */
+  }
+}
+
+.filtersRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Keep your existing .chartsGrid, .paginationRow, .errorText, etc. */

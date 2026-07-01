@@ -1,0 +1,15 @@
+ TypeScript strict mode enabled
+ ESLint + Prettier + lint-staged + Husky
+ MUI theme and CssBaseline
+ SCSS variables + modular SCSS
+ axios instance with interceptors + central error handling
+ ErrorBoundary component
+ Router + Layouts (Main + Auth)
+ Add API typed clients (openapi generator / hand-written)
+
+ react-intl-universal (expand JSON locales)
+ light dark theme setup
+ Unit test runner (Vitest)
+ Add monitoring (Sentry/LogRocket)
+ Add authentication provider and secure routes
+ Add component library

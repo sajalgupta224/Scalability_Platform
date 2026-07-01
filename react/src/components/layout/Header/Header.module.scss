@@ -1,0 +1,111 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+@use '../../../styles/color.scss' as *;
+
+.header {
+  @include flex-between;
+  background-color: $color-background-secondary;
+  min-height: $header-height;
+  height: $header-height;
+  padding: 1rem 1rem 0.5rem;
+  border-bottom: $border-width-thin solid $color-border;
+  box-shadow: $shadow-sm;
+
+  @include respond-below(md) {
+    padding: 0 $spacing-4;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  padding-right: $spacing-4;
+  img {
+    height: $spacing-7;
+    width: auto;
+    @include respond-below(md) {
+      height: $spacing-5;
+    }
+  }
+  img.logo {
+    border-right: none;
+    padding-right: 0;
+    height: $spacing-7;
+    width: auto;
+  }
+  img.logoprimary {
+    padding-left: $spacing-4;
+    height: 40px;
+    width: auto;
+    @include respond-below(md) {
+      height: $spacing-6;
+    }
+  }
+}
+
+.center {
+  img {
+    height: $spacing-7;
+
+    @include respond-below(md) {
+      height: $spacing-5;
+    }
+  }
+}
+
+.right {
+  @include flex-center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+
+  svg {
+    fill: $color-black;
+  }
+
+  @include respond-below(md) {
+    font-size: $font-size-xs;
+  }
+}
+
+.user {
+  @include respond-below(sm) {
+    display: none;
+  }
+}
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  height: 30px;
+}
+
+.logoprimary {
+  height: 22px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.user {
+  font-size: 14px;
+}

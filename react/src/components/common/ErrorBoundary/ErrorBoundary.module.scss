@@ -1,0 +1,52 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.errorBoundary {
+  @include flex-center;
+  flex-direction: column;
+  min-height: 50vh;
+  padding: $spacing-8;
+  text-align: center;
+  gap: $spacing-6;
+}
+
+.icon {
+  width: $spacing-20;
+  height: $spacing-20;
+  color: $color-error;
+  
+  @include respond-below(md) {
+    width: $spacing-16;
+    height: $spacing-16;
+  }
+}
+
+.title {
+  @include heading-2;
+  color: $color-error;
+  margin-bottom: $spacing-2;
+}
+
+.message {
+  @include body-text;
+  color: $color-text-secondary;
+  max-width: 500px;
+  margin-bottom: $spacing-4;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-3;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.reloadButton {
+  @include button-primary;
+  padding: $spacing-3 $spacing-6;
+}
+
+.homeButton {
+  @include button-secondary;
+  padding: $spacing-3 $spacing-6;
+}

@@ -1,0 +1,11 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  width: 820px;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #d0e2ff;
+  padding: 40px 48px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+}

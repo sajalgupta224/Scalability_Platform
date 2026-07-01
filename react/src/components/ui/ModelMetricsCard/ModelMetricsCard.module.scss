@@ -1,0 +1,196 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  background-color: #F0F4F9;
+  padding-bottom: $spacing-8;
+  margin-bottom: $spacing-6;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
+  
+  @include respond-below(md) {
+    padding: $spacing-6;
+    gap: $spacing-6;
+  }
+}
+
+// Summary Metrics Section
+.summarySection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.sectionTitle {
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.summaryCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-4;
+  
+  @include respond-below(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.summaryCard {
+  background-color: $color-background;
+  border-radius: $border-radius-sm;
+  padding: $spacing-14;
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.iconCircle {
+  width: 20%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.summaryIcon {
+  font-size: 32px;
+}
+
+.summaryContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+}
+
+.summaryValue {
+  color: $color-text-primary;
+  line-height: 1;
+  margin: 0;
+  font-size: $font-size-xl;
+  
+  @include respond-below(md) {
+    font-size: 36px;
+  }
+}
+
+.summaryLabel {
+  color: $color-text-secondary;
+  font-weight: $font-weight-normal;
+  font-size: $font-size-sm;
+}
+
+// Recommended Model Section
+.recommendedSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.recommendedCard {
+  background-color: $color-background;
+  border-radius: $border-radius-lg;
+  padding: $spacing-6;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.modelHeader {
+  display: flex;
+  gap: $spacing-4;
+  align-items: flex-start;
+}
+
+.modelIcon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-primary;
+  
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.modelInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.modelSubtext {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+  margin: 0;
+}
+
+.modelNameLarge {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin: 0;
+  
+  @include respond-below(md) {
+    font-size: $font-size-xl;
+  }
+}
+
+.recommendationText {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  line-height: $line-height-relaxed;
+  margin: 0;
+}
+
+// Performance Metrics Section
+.performanceSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-4;
+  background-color: $color-background;
+  border-radius: $border-radius-lg;
+  padding: $spacing-6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  
+  @include respond-below(md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-3;
+  }
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.metricLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  text-transform: capitalize;
+  font-weight: $font-weight-normal;
+}
+
+.metricValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}

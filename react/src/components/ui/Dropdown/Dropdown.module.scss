@@ -1,0 +1,13 @@
+@use '../../../styles/tokens' as *;
+
+.dropdown {
+  min-width: 250px;
+
+  .select {
+    background-color: $color-white;
+
+    &:hover {
+      background-color: $color-gray-50;
+    }
+  }
+}

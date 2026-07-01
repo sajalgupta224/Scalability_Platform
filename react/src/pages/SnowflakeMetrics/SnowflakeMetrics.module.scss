@@ -1,0 +1,318 @@
+@use '../../styles/tokens' as *;
+
+.snowflakeMetrics {
+  padding: $spacing-6;
+  max-width: 100%;
+
+  .tabBar {
+    display: flex;
+    gap: $spacing-2;
+    margin: $spacing-6 0;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0;
+  }
+
+  .tab {
+    padding: $spacing-2 $spacing-4;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #333;
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    &Active {
+      color: #1976d2;
+      border-bottom-color: #1976d2;
+      font-weight: 600;
+    }
+  }
+
+  .filtersRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-4;
+    margin: $spacing-6 0;
+    align-items: center;
+  }
+
+  .metricsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-4;
+    margin: $spacing-6 0;
+
+    @media (max-width: 1400px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .chartsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-6;
+    margin: $spacing-6 0;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .chartsGridFull {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+    margin: $spacing-6 0;
+  }
+
+  .tableWrapper {
+    margin: $spacing-6 0;
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+
+      th, td {
+        padding: $spacing-2 $spacing-3;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        white-space: nowrap;
+      }
+
+      th {
+        background: #f5f5f5;
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      tbody tr:hover {
+        background: rgba(25, 118, 210, 0.04);
+      }
+    }
+  }
+
+  .loading {
+    text-align: center;
+    padding: $spacing-8;
+    color: #999;
+    font-size: 14px;
+  }
+
+  .error {
+    text-align: center;
+    padding: $spacing-6;
+    color: #d32f2f;
+    background: #fff5f5;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .emptyState {
+    text-align: center;
+    padding: $spacing-8;
+    color: #999;
+    font-size: 14px;
+  }
+
+  /* ─── Query Optimization Recommendations ─── */
+  .recommendationsPanel {
+    padding: $spacing-4;
+  }
+
+  .recPrompt {
+    text-align: center;
+    padding: $spacing-6;
+
+    p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: $spacing-4;
+    }
+  }
+
+  .recButton {
+    padding: 10px 24px;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #1565c0;
+    }
+  }
+
+  .recRefreshButton {
+    margin-top: $spacing-4;
+    padding: 8px 16px;
+    background: transparent;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(25, 118, 210, 0.08);
+    }
+  }
+
+  .recLoading {
+    text-align: center;
+    padding: $spacing-8;
+
+    p {
+      color: #666;
+      font-size: 14px;
+      margin-top: $spacing-3;
+    }
+  }
+
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #e0e0e0;
+    border-top-color: #1976d2;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .recError {
+    text-align: center;
+    padding: $spacing-6;
+    color: #d32f2f;
+
+    p {
+      margin-bottom: $spacing-3;
+    }
+  }
+
+  .recSummary {
+    padding: $spacing-3 $spacing-4;
+    background: #f5f9ff;
+    border-left: 3px solid #1976d2;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: $spacing-4;
+    color: #333;
+  }
+
+  .recMeta {
+    color: #888;
+    font-size: 12px;
+  }
+
+  .recGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-4;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .recCard {
+    padding: $spacing-4;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .recImpact_high {
+    border-left: 3px solid #e53935;
+  }
+
+  .recImpact_medium {
+    border-left: 3px solid #fb8c00;
+  }
+
+  .recImpact_low {
+    border-left: 3px solid #43a047;
+  }
+
+  .recCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-2;
+  }
+
+  .recCategory {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 0.5px;
+  }
+
+  .recImpactBadge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: capitalize;
+  }
+
+  .badge_high {
+    background: #ffebee;
+    color: #c62828;
+  }
+
+  .badge_medium {
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  .badge_low {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .recTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 $spacing-2 0;
+  }
+
+  .recDescription {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+  }
+}

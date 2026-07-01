@@ -1,0 +1,164 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  margin-top: $spacing-5;
+}
+
+.title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin-bottom: $spacing-2;
+}
+
+.radioGroup {
+  display: flex;
+  gap: $spacing-3;
+  width: 100%;
+
+  @include respond-below(sm) {
+    flex-direction: column;
+  }
+}
+
+// Shared card base — used by both states
+%card-shared {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: $spacing-4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: $border-radius-md + 2;
+  border: $border-width-thin solid $color-border-dark;
+  transition:
+    border-color $transition-duration-fast $transition-timing-ease,
+    background-color $transition-duration-fast $transition-timing-ease,
+    box-shadow $transition-duration-fast $transition-timing-ease;
+
+  &:focus-within {
+    outline: 3px solid rgba($color-primary, 0.25);
+    outline-offset: 2px;
+  }
+
+  :global(.MuiRadio-root) {
+    padding: 0;
+    margin-bottom: $spacing-2;
+  }
+
+  :global(.MuiRadio-root.Mui-checked) {
+    color: $color-primary;
+  }
+
+  :global(.MuiFormControlLabel-label) {
+    width: 100%;
+  }
+}
+
+.cardBase {
+  @extend %card-shared;
+  background-color: $color-white;
+
+  &:hover {
+    border-color: $color-gray-400;
+    background-color: $color-gray-50;
+  }
+
+  .iconCircle {
+    background-color: $color-gray-100;
+
+    svg {
+      color: $color-text-disabled;
+    }
+  }
+
+  .labelText {
+    font-size: $font-size-sm + 1;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+
+  .labelDescription {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    line-height: $line-height-normal;
+  }
+}
+
+.cardSelected {
+  @extend %card-shared;
+  border-color: $color-primary;
+  background-color: #eaf3ff;
+  box-shadow: 0 0 0 1px rgba($color-primary, 0.1);
+
+  &:hover {
+    border-color: $color-primary-dark;
+    background-color: #e2efff;
+  }
+
+  .iconCircle {
+    background-color: rgba($color-primary, 0.1);
+
+    svg {
+      color: $color-primary;
+    }
+  }
+
+  .labelText {
+    font-size: $font-size-sm + 1;
+    font-weight: $font-weight-semibold;
+    color: $color-primary-dark;
+  }
+
+  .labelDescription {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+    line-height: $line-height-normal;
+  }
+}
+
+.cardHidden {
+  display: none;
+}
+
+.radio {
+  align-self: flex-start;
+}
+
+.labelContent {
+  width: 100%;
+}
+
+.cardBody {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-3;
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: $border-radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    font-size: $icon-size-md;
+  }
+}
+
+.labelTextWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.errorText {
+  margin-top: $spacing-2;
+  font-size: $font-size-xs + 1;
+  color: $color-error;
+}

@@ -1,0 +1,157 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+  height: 100%;
+}
+
+.modelsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.chartSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.sectionTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+// Chart Tabs
+.chartTabs {
+  display: flex;
+  border-bottom: 2px solid $color-border-light;
+  gap: $spacing-2;
+}
+
+.chartTab {
+  padding: $spacing-3 $spacing-5;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  color: $color-text-secondary;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all $transition-duration-base $transition-timing-ease;
+  white-space: nowrap;
+  position: relative;
+  margin-bottom: -2px;
+  
+  &:hover {
+    color: $color-text-primary;
+    background-color: rgba($color-primary, 0.04);
+  }
+  
+  &.activeTab {
+    color: $color-text-primary;
+    font-weight: $font-weight-medium;
+    border-bottom-color: $color-primary;
+  }
+}
+
+// Tab Content
+.tabContent {
+  padding: $spacing-5;
+  flex: 1;
+  @at-root [class*="modelComparisonEnabled"] & {
+    background-color: #ffffff;
+  }
+}
+
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.chartHeading {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.chartSubheading {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  margin: 0 0 $spacing-4;
+}
+
+.chartWrapper {
+  width: 100%;
+  min-height: 420px;
+}
+
+// Chart Footer
+.chartFooter {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  padding-top: $spacing-4;
+  border-top: $border-width-thin solid $color-border-light;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+.legendTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+}
+
+.legendItems {
+  display: flex;
+  gap: $spacing-6;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+}
+
+.legendColor {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.timestamp {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+// Loading & Empty States
+.loadingContainer {
+  @include flex-center;
+  min-height: 400px;
+  width: 100%;
+}
+
+.emptyState {
+  @include flex-center;
+  min-height: 200px;
+  padding: $spacing-8;
+  text-align: center;
+  color: $color-text-secondary;
+}

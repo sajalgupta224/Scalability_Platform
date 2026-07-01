@@ -1,0 +1,23 @@
+@use '../styles/tokens' as *;
+@use '../styles/mixins' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  background-color: $color-background;
+  overflow-y: auto;
+  
+  @include custom-scrollbar;
+}

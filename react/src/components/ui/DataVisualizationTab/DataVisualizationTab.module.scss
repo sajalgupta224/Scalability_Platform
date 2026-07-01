@@ -1,0 +1,32 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  padding: $spacing-6 $spacing-6 $spacing-4 $spacing-6;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-4;
+  color: $color-text-primary;
+}
+
+.chartWrapper {
+  padding: $spacing-6 $spacing-4;
+  background-color: $color-background;
+  border-radius: $border-radius-md;
+  border: 1px solid #d0d0d0;
+  width: 100%;
+  min-height: 450px;
+}
+
+.noData {
+  text-align: center;
+  color: $color-text-secondary;
+  padding: $spacing-8;
+  font-size: $font-size-base;
+}

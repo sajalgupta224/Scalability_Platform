@@ -1,0 +1,97 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/color.scss' as *;
+
+.graywrapper {
+  background-color: #ffffff;
+  padding: 40px;
+  min-height: calc(100vh - $header-height);
+  p.wrapperdesc {
+    color: $gray-dark;
+  }
+}
+.pageContainer {
+  min-height: calc(100vh - $header-height);
+  background-color: $color-background-tertiary;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentWrapper {
+  width: 100%;
+  padding: $spacing-6 $spacing-10;
+
+  @include respond-below(lg) {
+    padding: $spacing-6 $spacing-6;
+  }
+
+  @include respond-below(md) {
+    padding: $spacing-4 $spacing-4;
+  }
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid #e1e1e1;
+    border-radius: 12px;
+    padding: 24px;
+    background-color: #ffffff;
+    box-shadow: none;
+    max-width: 700px;
+    width: 100%;
+    margin: 24px auto;
+
+    @include respond-below(md) {
+      padding: $spacing-6;
+      margin: 16px auto;
+    }
+  }
+
+  .formWrapper > * {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.pageTitle {
+  font-size: 16px;
+  font-weight: $font-weight-normal;
+  color: $color-text-primary;
+  margin-bottom: $spacing-6;
+
+  @include respond-below(md) {
+    font-size: 14px;
+    margin-bottom: $spacing-4;
+  }
+}
+
+.formTitle {
+  font-size: 28px;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-8;
+
+  @include respond-below(md) {
+    font-size: 24px;
+    margin-bottom: $spacing-6;
+  }
+}
+
+.formCard {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  max-width: 100%;
+
+  @include respond-below(lg) {
+    padding: 0;
+  }
+
+  @include respond-below(md) {
+    padding: 0;
+  }
+}

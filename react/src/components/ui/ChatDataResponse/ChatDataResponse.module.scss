@@ -1,0 +1,103 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  margin-bottom: $spacing-6;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
+.logo {
+  height: 20px;
+  width: auto;
+}
+
+.refreshBtn {
+  color: $color-primary;
+  padding: $spacing-1;
+
+  &:hover {
+    background-color: rgba(25, 118, 210, 0.08);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.botText {
+  color: $color-text-primary;
+  line-height: 1.6;
+
+  p {
+    margin: 0 0 $spacing-2;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul,
+  ol {
+    margin: $spacing-2 0;
+    padding-left: $spacing-5;
+  }
+
+  li {
+    margin-bottom: $spacing-1;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.noteSection {
+  margin-top: $spacing-4;
+  padding: $spacing-3 $spacing-4;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.footerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: calc(100% + 40px);
+  // margin-left: -20px;
+  // margin-right: -20px;
+  // margin-bottom: -14px;
+  // margin-top: $spacing-4;
+}
+
+.planPlaceholder {
+  padding: $spacing-8 $spacing-6;
+  text-align: center;
+  color: $color-text-secondary;
+  font-style: italic;
+}
+
+.loadingRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loadingText {
+  font-size: 14px; // match your markdown font size if needed
+}

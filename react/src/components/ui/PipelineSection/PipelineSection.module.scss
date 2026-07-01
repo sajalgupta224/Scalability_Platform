@@ -1,0 +1,112 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.pipelineSection {
+  margin-bottom: $spacing-6;
+}
+
+.panelTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  margin-bottom: $spacing-2;
+  color: $color-text-primary;
+}
+
+.pipelineSelect {
+  margin-bottom: $spacing-4;
+
+  :global(.MuiSelect-root) {
+    border-radius: $border-radius-md;
+  }
+
+  // Hide native input value when disabled to prevent overlap
+  :global(.Mui-disabled .MuiSelect-nativeInput) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.createPipelineBtn {
+  background-color: $color-primary;
+  color: $color-white;
+  font-weight: $font-weight-semibold;
+  border-radius: $border-radius-md;
+  padding: $spacing-3;
+  margin-bottom: $spacing-6;
+  transition: $transition-colors;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.createChatbotBtn {
+  background-color: $color-primary;
+  color: $color-white;
+  font-weight: $font-weight-semibold;
+  border-radius: $border-radius-md;
+  padding: $spacing-3;
+  margin-top: $spacing-4;
+  transition: $transition-colors;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+
+  &:disabled {
+    background-color: $color-border;
+    color: $color-text-disabled;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.selectFormControl {
+  margin-top: 10px;
+  :global(.MuiOutlinedInput-root) {
+    background-color: $color-background;
+    border: $border-width-thin solid $color-border;
+    
+    &:hover {
+      border-color: $color-border-dark;
+    }
+    
+    &.Mui-focused {
+      border-color: $color-primary;
+    }
+    
+    fieldset {
+      border: none;
+    }
+  }
+  
+  :global(.MuiSelect-select) {
+    padding: $spacing-4 $spacing-10 $spacing-4 $spacing-4;
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+    
+    &:focus {
+      background-color: transparent;
+    }
+  }
+  
+  :global(.MuiSelect-icon) {
+    right: $spacing-8;
+    color: $color-text-tertiary;
+  }
+
+  // Additional fix: ensure native input is hidden when parent is disabled
+  :global(.Mui-disabled) {
+    :global(.MuiSelect-nativeInput) {
+      display: none;
+    }
+  }
+}

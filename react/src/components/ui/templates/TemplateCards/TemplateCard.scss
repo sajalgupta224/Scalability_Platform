@@ -1,0 +1,187 @@
+.template-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden; /* ensure card itself doesn't show raw overflow */
+  display: inline-block;
+  // flex-direction: column;
+  // min-height: 250px;
+  height: 380px; /* fixed height to make all cards equal */
+  margin: 0;
+  width: 250px; /* FIXED width */
+  max-width: 250px; /* DO NOT EXPAND */
+  display: block;
+  white-space: normal; /* allow text wrapping */
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s,
+    transform 0.06s ease-out;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
+
+  &.selected {
+    border: 2px solid #3b82f6;
+    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.18);
+  }
+
+  &__select-icon {
+    width: 100%;
+    height: 40px; // fixed top area
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 12px 12px 0 0;
+    flex: 0 0 auto; // don't shrink
+  }
+
+  .template-card__select {
+    background: #fff;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #3b82f6;
+    border: 2px solid #3b82f6;
+    opacity: 0.95;
+
+    &.checked {
+      background: #3b82f6;
+      color: #fff;
+    }
+  }
+
+  &__content {
+    padding: 0 18px 12px 18px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 auto; // fixed height region
+    padding-top: 12px;
+    gap: 8px;
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.25;
+      color: #111827;
+    }
+
+    .template-card__info {
+      background: none;
+      border: none;
+      color: #6b7280;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        background 0.2s,
+        color 0.2s;
+
+      &:hover {
+        background: #f3f4f6;
+        color: #374151;
+      }
+
+      .templates-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden; /* prevent scrolling, we'll clamp text instead */
+    padding-top: 8px;
+    padding-right: 2px;
+    transition: padding-right 0.2s ease;
+
+    /* remove hover scrolling behavior to keep uniform height */
+    &:hover {
+      padding-right: 6px;
+    }
+  }
+
+  &__desc {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+    margin: 10px 0 0 0;
+    line-height: 1.35;
+
+    /* multiline truncation with ellipsis */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 7; /* adjust number of visible lines as needed */
+    line-clamp: 7; /* standard property for compatibility */
+  }
+
+  &__details {
+    margin: 10px 0 0 0;
+    padding-left: 18px;
+    color: #444;
+    font-size: 0.97rem;
+
+    /* clamp details so the list doesn't expand the card */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5; /* adjust as needed */
+    line-clamp: 5; /* standard property for compatibility */
+
+    li {
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+  }
+
+  &__body::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  &__body:hover::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &__body:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+
+  &__body {
+    scrollbar-width: none;
+  }
+
+  &__body:hover {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+  }
+}

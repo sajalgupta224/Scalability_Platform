@@ -1,0 +1,75 @@
+
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/color.scss' as *;
+
+.wrapper {
+  padding: 40px;
+  background-color: #ffffff;
+  min-height: calc(100vh - $header-height);
+
+  p.wrapperdesc {
+    color: $gray-dark;
+  }
+
+  .home {
+    @include flex-center;
+    position: relative;
+    padding: $spacing-10 $spacing-16;
+    background-color: #ffffff;
+
+    @include respond-below(lg) {
+      padding: $spacing-8 $spacing-10;
+    }
+
+    @include respond-below(md) {
+      padding: $spacing-6 $spacing-8;
+    }
+
+    @include respond-below(sm) {
+      padding: $spacing-5 $spacing-4;
+    }
+
+    :global(._content_1mjzu_63) {
+      padding: 0;
+      text-align: center;
+      background-color: $color-background;
+    }
+  }
+
+  /* Base cards layout (used by both modes) */
+  .cards {
+    width: 100%;
+    display: grid;
+    gap: $spacing-5;
+    justify-items: center;
+
+    /* Responsive layout */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    :global(._card_1mjzu_19) {
+      padding: $spacing-4;
+      width: 100%;
+      max-width: 320px;
+
+      :global(._image_1mjzu_51) {
+        width: 60%;
+        height: 60%;
+        margin: 0 auto;
+        object-fit: cover;
+        background-color: unset;
+      }
+    }
+  }
+
+  /* ✅ Only for Talk to Document: reduce the huge gap */
+  .cardsDocument {
+    max-width: 1000px;       /* reduce if you want tighter like 980px */
+    margin: 0 auto;
+  }
+
+  /* ✅ Only for Talk to Data: keep same behavior */
+  .cardsData {
+    max-width: none;
+  }
+}

@@ -1,0 +1,74 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.tableWrapper {
+  width: 100%;
+  margin-top: $spacing-6;
+}
+
+.tableContainer {
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+
+  :global {
+    .MuiPaper-root {
+      box-shadow: none;
+    }
+  }
+}
+
+.table {
+  border-color: #95c5f0;
+  :global {
+    .MuiTableCell-root {
+      font-family: $font-family-primary;
+    }
+  }
+}
+
+.headerCell {
+  background-color: #c1d5e6;
+  color: $color-text-primary;
+  font-weight: $font-weight-semibold !important;
+  font-size: $font-size-sm !important;
+  padding: $spacing-4 $spacing-4 !important;
+  border-bottom: 2px solid $color-border !important;
+  white-space: nowrap;
+}
+
+.tableRow {
+  &:hover {
+    background-color: $color-background-secondary;
+  }
+
+  &:last-child {
+    :global {
+      .MuiTableCell-root {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.tableCell {
+  font-size: $font-size-sm !important;
+  color: $color-text-primary !important;
+  padding: $spacing-4 $spacing-4 !important;
+  border-bottom: 1px solid $color-border-light !important;
+}
+
+.errorMessage {
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: 1200px) {
+    max-width: 300px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 200px;
+  }
+}

@@ -1,0 +1,72 @@
+@use '../../styles/tokens' as *;
+
+.serviceMonitoring {
+  padding: $spacing-6;
+  max-width: 100%;
+
+  .filtersRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $spacing-6;
+    margin: $spacing-8 0;
+    align-items: flex-start;
+
+    > :first-child {
+      grid-column: 1;
+    }
+
+    > :last-child {
+      grid-column: 3;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+
+      > :first-child,
+      > :last-child {
+        grid-column: 1;
+      }
+    }
+  }
+
+  .metricsGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: $spacing-4;
+    margin: $spacing-8 0;
+
+    @media (max-width: 1400px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .alertsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-4;
+    margin: $spacing-8 0;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .chartsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-6;
+    margin: $spacing-8 0;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

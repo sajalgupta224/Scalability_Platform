@@ -1,0 +1,55 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d6e6fa;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 64px;
+}
+
+.card:hover {
+  border-color: #bcd7ff;
+}
+
+.checked {
+  border-color: #6ba6ff !important;
+  background: #f7fbff;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 24px;
+  color: #6b7280;
+}
+
+.nativeRadio {
+  display: none;
+}
+
+.muiRadio :global(.MuiSvgIcon-root) {
+  font-size: 22px;
+}

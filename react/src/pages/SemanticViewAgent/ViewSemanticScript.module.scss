@@ -1,0 +1,74 @@
+
+@use '../../styles/tokens' as *;
+
+.wrapper {
+  padding: 40px;
+  background: #f5f6fa;
+  min-height: calc(100vh - $header-height);
+}
+
+.pageTitle {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 6px 0 18px;
+  color: rgba(17, 24, 39, 0.78);
+}
+
+.queryId {
+  max-width: 980px;
+  margin: 0 auto 10px;
+  font-size: 13px;
+  color: rgba(17, 24, 39, 0.60);
+
+  span {
+    font-weight: 600;
+    color: rgba(17, 24, 39, 0.75);
+  }
+}
+
+.scriptCard {
+  max-width: 980px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+  padding: 18px;
+}
+
+.code {
+  margin: 0;
+  padding: 14px;
+  border-radius: 10px;
+  background: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(17, 24, 39, 0.85);
+  overflow: auto;
+  min-height: 380px;
+}
+
+.actions {
+  max-width: 980px;
+  margin: 18px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.backBtn {
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  color: rgba(17, 24, 39, 0.70);
+}
+
+.backBtn:hover {
+  background: rgba(59, 130, 246, 0.06);
+  border-color: rgba(59, 130, 246, 0.35);
+}

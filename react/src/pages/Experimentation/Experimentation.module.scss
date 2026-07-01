@@ -1,0 +1,142 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  position: relative;
+  height: calc(100vh - $header-height);
+  background-color: $color-background;
+  overflow: hidden;
+}
+
+.mainContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-6;
+  overflow: hidden;
+  transition: margin-right $transition-duration-slow $transition-timing-ease;
+
+  @include respond-below(md) {
+    padding: $spacing-4;
+  }
+}
+
+.headerSection {
+  text-align: left;
+  margin-bottom: $spacing-4;
+  flex-shrink: 0;
+}
+
+.heading {
+  @include heading-2;
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-1;
+}
+
+.subHeading {
+  @include small-text;
+  color: $color-text-tertiary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.botSection {
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: $spacing-8;
+  padding: $spacing-8 0;
+  flex-shrink: 0;
+}
+
+.botImage {
+  height: 240px;
+  width: 240px;
+  margin-bottom: $spacing-4;
+
+  @include respond-below(md) {
+    height: 180px;
+    width: 180px;
+  }
+}
+
+.botTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  margin-bottom: $spacing-2;
+  justify-content: center;
+}
+
+.botTitle {
+  @include heading-3;
+  margin: 0;
+}
+
+.botTitleInput {
+  @include heading-3;
+  margin: 0;
+  padding: $spacing-1 $spacing-2;
+  border: 2px solid $color-primary;
+  border-radius: 4px;
+  outline: none;
+  text-align: center;
+  min-width: 200px;
+  background-color: $color-background;
+  
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.editIconButton {
+  color: $color-text-secondary;
+  padding: $spacing-1;
+  
+  &:hover {
+    color: $color-primary;
+    background-color: rgba($color-primary, 0.08);
+  }
+  
+  svg {
+    font-size: 18px;
+  }
+}
+
+.botDescription {
+  @include small-text;
+  max-width: 400px;
+}
+
+.chatScroll {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: $spacing-4;
+  padding-right: $spacing-2;
+
+  @include custom-scrollbar;
+}
+
+.chatInputWrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.modelComparisonPanel {
+  background-color: #F0F4F9;
+}
+
+// Mobile responsiveness
+@include respond-below(lg) {
+  .mainContent {
+    margin-right: 0 !important;
+  }
+}

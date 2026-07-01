@@ -1,0 +1,249 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/color.scss' as *;
+
+.graywrapper {
+  padding: 40px;
+  min-height: calc(100vh - $header-height);
+}
+
+.wrappertitle {
+  font-size: 24px;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 8px 0;
+}
+
+.wrapperdesc {
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  margin: 0 0 24px 0;
+}
+
+.container {
+  background-color: #fff;
+  padding: 0px 120px;
+  border-radius: 15px;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @include respond-below(lg) {
+    padding: 0px 80px;
+  }
+
+  @include respond-below(md) {
+    padding: 0px 40px;
+  }
+
+  @include respond-below(sm) {
+    padding: 0px 20px;
+  }
+}
+
+.headerSection {
+  text-align: center;
+  margin-bottom: 20px;
+
+  @include respond-below(md) {
+    margin-bottom: 50px;
+  }
+}
+
+.title {
+  font-size: 36px;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 12px;
+
+  @include respond-below(md) {
+    font-size: 32px;
+  }
+
+  @include respond-below(sm) {
+    font-size: 28px;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: $font-weight-normal;
+  color: $color-text-secondary;
+
+  @include respond-below(md) {
+    font-size: 15px;
+  }
+}
+
+.formSection {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 24px;
+  text-align: left;
+
+  @include respond-below(md) {
+    font-size: 18px;
+  }
+}
+
+.fieldWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  position: relative;
+
+  @include respond-below(md) {
+    gap: 12px;
+  }
+}
+
+.textField {
+  flex: 1;
+
+  :global(.MuiOutlinedInput-root) {
+    background-color: #f0f4f8;
+    border-radius: 4px;
+    border: 1px solid #8ebcff;
+
+    fieldset {
+      border-radius: 4px;
+    }
+
+    &:hover fieldset {
+      border-color: #1565c0;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #1976d2;
+      border-width: 1px;
+    }
+  }
+
+  :global(.MuiInputLabel-root) {
+    color: $color-text-secondary;
+    font-size: 14px;
+
+    &.Mui-focused {
+      color: #1976d2;
+    }
+  }
+
+  :global(.MuiOutlinedInput-input) {
+    padding: 18px 14px;
+    font-size: 16px;
+    color: $color-text-primary;
+  }
+}
+
+.dropdownContainer {
+  flex: 1;
+
+  :global(.dropdown) {
+    :global(.MuiFormControl-root) {
+      :global(.MuiOutlinedInput-root) {
+        background-color: #f0f4f8;
+        border-radius: 10px;
+        height: 64px;
+
+        fieldset {
+          border: 2px solid #1976d2;
+          border-radius: 10px;
+        }
+
+        &:hover fieldset {
+          border-color: #1565c0;
+        }
+
+        &.Mui-focused fieldset {
+          border-color: #1976d2;
+          border-width: 2px;
+        }
+      }
+
+      :global(.MuiInputLabel-root) {
+        color: $color-text-secondary;
+        font-size: 14px;
+
+        &.Mui-focused {
+          color: #1976d2;
+        }
+      }
+
+      :global(.MuiSelect-select) {
+        padding: 20px 14px;
+        font-size: 16px;
+        color: $color-text-primary;
+      }
+    }
+  }
+}
+
+.helpIconWrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.buttonSection {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+
+  @include respond-below(md) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+}
+
+.backButton {
+  min-width: 140px;
+  height: 48px;
+  border-radius: 8px;
+  text-transform: none;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  border-color: $color-border;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: $color-text-primary;
+  }
+
+  @include respond-below(md) {
+    width: 100%;
+  }
+}
+
+.createButton {
+  min-width: 260px;
+  height: 48px;
+  border-radius: 8px;
+  text-transform: none;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  background-color: #1976d2;
+  color: #fff;
+
+  &:hover:not(.disabled) {
+    background-color: #1565c0;
+  }
+
+  &.disabled {
+    background-color: #d0d0d0 !important;
+    color: #808080 !important;
+    cursor: not-allowed;
+  }
+
+  @include respond-below(md) {
+    width: 100%;
+  }
+}

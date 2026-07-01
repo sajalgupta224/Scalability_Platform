@@ -1,0 +1,216 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/color.scss' as *;
+
+.graywrapper {
+  // background-color: #e1e1e1;
+  padding: 40px;
+}
+.container {
+  min-height: calc(100vh - $header-height);
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  p.wrapperdesc {
+    color: $gray-dark;
+  }
+  @include respond-below(lg) {
+    padding: $spacing-6 $spacing-6;
+  }
+
+  @include respond-below(md) {
+    padding: $spacing-4 $spacing-4;
+  }
+}
+
+.headerSection {
+  text-align: center;
+  margin-bottom: $spacing-8;
+
+  @include respond-below(md) {
+    margin-bottom: $spacing-6;
+  }
+}
+
+.breadcrumb {
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  color: $color-text-primary;
+  margin-bottom: $spacing-4;
+
+  @include respond-below(md) {
+    font-size: $font-size-sm;
+  }
+}
+p.wrapperdesc {
+  color: $gray-dark;
+}
+.title {
+  font-size: 32px;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 0;
+
+  @include respond-below(md) {
+    font-size: $font-size-3xl;
+  }
+
+  @include respond-below(sm) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-normal;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-6;
+
+  @include respond-below(md) {
+    font-size: $font-size-base;
+  }
+}
+
+.searchSection {
+  display: flex;
+  gap: $spacing-4;
+  max-width: 700px; /* match dialog width */
+  margin: 0 auto $spacing-8;
+
+  @include respond-below(md) {
+    flex-direction: column;
+    gap: $spacing-3;
+  }
+}
+
+.searchInput {
+  flex: 1;
+  background-color: #f4f4f4;
+  border-radius: $border-radius-md;
+  height: 48px;
+  .MuiInputBase-input:focus {
+    background-color: #f4f4f4;
+  }
+  :global(.MuiOutlinedInput-root) {
+    border-radius: $border-radius-md;
+    border: $border-width-medium solid $color-border-light;
+    height: 48px;
+
+    &:hover {
+      border-color: $color-border;
+    }
+
+    &.Mui-focused {
+      border-color: $color-primary;
+    }
+  }
+
+  :global(.MuiOutlinedInput-notchedOutline) {
+    border: none;
+  }
+}
+
+.searchIcon {
+  color: $color-text-disabled;
+}
+
+.createButton {
+  min-width: 140px;
+  height: 48px;
+  border-radius: $border-radius-md;
+  text-transform: none;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  background-color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+
+  @include respond-below(md) {
+    min-width: 100%;
+  }
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-5;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @include respond-below(lg) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: $spacing-4;
+  }
+
+  @include respond-below(md) {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: $spacing-3;
+  }
+
+  @include respond-below(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background-color: $color-background;
+  border-radius: $border-radius-lg;
+  border: $border-width-thin solid $color-border-light;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all $transition-duration-base $transition-timing-ease;
+  display: flex;
+  flex-direction: column;
+  width: 302px;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+    border-color: $color-primary;
+  }
+}
+
+.cardImage {
+  width: 100%;
+  height: 180px;
+  background-color: $color-gray-100;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.cardContent {
+  padding: $spacing-4;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+.cardTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 0; // $spacing-2
+}
+
+.cardDescription {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.noResults {
+  text-align: center;
+  color: $color-text-secondary;
+  font-size: $font-size-base;
+  padding: $spacing-8 0;
+  grid-column: 1 / -1;
+}

@@ -1,0 +1,330 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.pageContainer {
+  min-height: calc(100vh - $header-height);
+  background-color: $color-background-tertiary;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentWrapper {
+  width: 100%;
+  padding: $spacing-6 $spacing-10;
+  
+  @include respond-below(lg) {
+    padding: $spacing-6 $spacing-6;
+  }
+  
+  @include respond-below(md) {
+    padding: $spacing-4 $spacing-4;
+  }
+}
+
+// Search View Styles
+.searchViewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: $spacing-6;
+}
+
+.searchWrapper {
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-6;
+}
+
+.searchAutocomplete {
+  width: 100%;
+
+  :global(.MuiOutlinedInput-root) {
+    border-radius: $border-radius-full;
+    background-color: $color-background;
+    padding-left: $spacing-2;
+    border: $border-width-thin solid $color-primary;
+    
+    &:hover {
+      border-color: $color-primary;
+    }
+    
+    &.Mui-focused {
+      border-color: $color-primary;
+    }
+    
+    fieldset {
+      border: none;
+    }
+  }
+  
+  :global(.MuiOutlinedInput-input) {
+    padding: $spacing-3 $spacing-4;
+    font-size: $font-size-base;
+    
+    &::placeholder {
+      color: $color-text-tertiary;
+      opacity: 1;
+    }
+  }
+}
+
+.searchIcon {
+  color: $color-text-tertiary;
+  margin-right: $spacing-2;
+  margin-left: $spacing-2;
+}
+
+.createButton {
+  :global(.MuiButton-outlined) {
+    border-radius: $border-radius-full;
+    border: $border-width-thin solid $color-border;
+    color: $color-text-primary;
+    text-transform: none;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    padding: $spacing-2 $spacing-6;
+    
+    &:hover {
+      background-color: $color-background-secondary;
+      border-color: $color-border-dark;
+    }
+    
+    .MuiButton-startIcon {
+      margin-right: $spacing-2;
+    }
+  }
+}
+
+// Create View Styles
+.createViewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: $spacing-4;
+}
+
+.formTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-8 0;
+  text-align: center;
+}
+
+.formCardWrapper {
+  width: 100%;
+  max-width: 600px;
+}
+
+.formCard {
+  background-color: $color-gray-200;
+  border-radius: $border-radius-2xl;
+  padding: $spacing-10 $spacing-8;
+  box-shadow: none;
+  border: none;
+  
+  @include respond-below(md) {
+    padding: $spacing-6;
+  }
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  position: relative;
+}
+
+.fieldLabelWrapper {
+  display: none; // Hide label wrapper as labels are shown as placeholders
+}
+
+.fieldLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+}
+
+.infoIcon {
+  width: 20px;
+  height: 20px;
+  color: $color-text-tertiary;
+  cursor: help;
+  position: absolute;
+  right: $spacing-4;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.inputField {
+  :global(.MuiOutlinedInput-root) {
+    border-radius: $border-radius-2xl;
+    background-color: $color-background;
+    border: $border-width-thin solid $color-border;
+    
+    &:hover {
+      border-color: $color-border-dark;
+    }
+    
+    &.Mui-focused {
+      border-color: $color-primary;
+    }
+    
+    fieldset {
+      border: none;
+    }
+  }
+  
+  :global(.MuiOutlinedInput-input) {
+    padding: $spacing-4 $spacing-10 $spacing-4 $spacing-4;
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+    
+    &::placeholder {
+      color: $color-text-tertiary;
+      opacity: 1;
+    }
+  }
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.selectFormControl {
+  :global(.MuiOutlinedInput-root) {
+    border-radius: $border-radius-2xl;
+    background-color: $color-background;
+    border: $border-width-thin solid $color-border;
+    
+    &:hover {
+      border-color: $color-border-dark;
+    }
+    
+    &.Mui-focused {
+      border-color: $color-primary;
+    }
+    
+    fieldset {
+      border: none;
+    }
+  }
+  
+  :global(.MuiSelect-select) {
+    padding: $spacing-4 $spacing-10 $spacing-4 $spacing-4;
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+    
+    &:focus {
+      background-color: transparent;
+    }
+  }
+  
+  :global(.MuiSelect-icon) {
+    right: $spacing-8;
+    color: $color-text-tertiary;
+  }
+}
+
+.selectEndAdornment {
+  position: absolute;
+  right: $spacing-10;
+  pointer-events: none;
+  
+  .infoIcon {
+    position: static;
+    transform: none;
+  }
+}
+
+.selectField {
+  :global(.MuiOutlinedInput-notchedOutline) {
+    border: none;
+  }
+  
+  :global(.MuiSelect-select) {
+    &.MuiSelect-select {
+      padding-right: $spacing-12 !important;
+    }
+  }
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-4;
+  margin-top: $spacing-4;
+  
+  @include respond-below(sm) {
+    flex-direction: column;
+  }
+}
+
+.backButton {
+  :global(.MuiButton-outlined) {
+    flex: 1;
+    border-radius: $border-radius-full;
+    border: $border-width-thin solid $color-border;
+    color: $color-text-primary;
+    text-transform: none;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    padding: $spacing-3 $spacing-6;
+    
+    &:hover {
+      background-color: $color-background-secondary;
+      border-color: $color-border-dark;
+    }
+  }
+}
+
+.nextButton {
+  :global(.MuiButton-contained) {
+    flex: 1;
+    border-radius: $border-radius-full;
+    background-color: $color-gray-400;
+    color: $color-text-disabled;
+    text-transform: none;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    padding: $spacing-3 $spacing-6;
+    box-shadow: none;
+    
+    &:hover {
+      background-color: $color-gray-500;
+      box-shadow: none;
+    }
+    
+    &:not(.Mui-disabled) {
+      background-color: $color-gray-600;
+      color: $color-white;
+      
+      &:hover {
+        background-color: $color-gray-700;
+      }
+    }
+    
+    &.Mui-disabled {
+      background-color: $color-gray-400;
+      color: $color-text-disabled;
+    }
+  }
+}

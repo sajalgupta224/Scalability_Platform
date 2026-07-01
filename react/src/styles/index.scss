@@ -1,0 +1,372 @@
+// ============================================
+// GLOBAL STYLES
+// Main entry point for all styles
+// ============================================
+
+@use './tokens' as *;
+@use './mixins' as *;
+
+// --------------------------------------------
+// 1. CSS CUSTOM PROPERTIES (CSS Variables)
+// --------------------------------------------
+
+:root {
+  // Colors
+  --color-primary: #{$color-primary};
+  --color-primary-dark: #{$color-primary-dark};
+  --color-primary-light: #{$color-primary-light};
+  
+  --color-background: #{$color-background};
+  --color-background-secondary: #{$color-background-secondary};
+  --color-background-tertiary: #{$color-background-tertiary};
+  
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  
+  --color-border: #{$color-border};
+  
+  // Spacing
+  --spacing-unit: #{$spacing-4};
+  
+  // Layout
+  --header-height: #{$header-height};
+  --sidebar-width: #{$sidebar-width};
+  --sidebar-collapsed-width: #{$sidebar-collapsed-width};
+  
+  // Typography
+  --font-family-primary: #{$font-family-primary};
+  
+  // Transitions
+  --transition-base: #{$transition-base};
+}
+
+// --------------------------------------------
+// 2. RESET & BASE STYLES
+// --------------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  background-color: $color-background;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+// --------------------------------------------
+// 3. TYPOGRAPHY
+// --------------------------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+}
+
+h1 {
+  font-size: $font-size-3xl;
+  
+  @include respond-below(md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-2xl;
+  
+  @include respond-below(md) {
+    font-size: $font-size-xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-xl;
+}
+
+h4 {
+  font-size: $font-size-lg;
+}
+
+h5 {
+  font-size: $font-size-md;
+}
+
+h6 {
+  font-size: $font-size-base;
+}
+
+p {
+  margin: 0 0 $spacing-4;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-duration-fast $transition-timing-ease;
+
+  &:hover {
+    color: $color-primary-dark;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+    border-radius: $border-radius-sm;
+  }
+}
+
+// --------------------------------------------
+// 4. BUTTONS
+// --------------------------------------------
+
+button {
+  @include button-base;
+  background-color: $color-primary;
+  color: $color-primary-contrast;
+}
+
+// Reset button styles for icon buttons
+button[aria-label] {
+  padding: $spacing-2;
+  background: transparent;
+  border: none;
+  color: inherit;
+  
+  &:hover:not(:disabled) {
+    background-color: rgba($color-primary, 0.1);
+  }
+}
+
+// --------------------------------------------
+// 5. FORM ELEMENTS
+// --------------------------------------------
+
+input,
+textarea,
+select {
+  @include input-base;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+// --------------------------------------------
+// 6. LISTS
+// --------------------------------------------
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+// --------------------------------------------
+// 7. IMAGES
+// --------------------------------------------
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+.react-flow svg {
+  display: initial;
+  max-width: initial;
+}
+
+// Fix invisible cursor on white background in lineage graph
+.react-flow__pane {
+  cursor: default !important;
+}
+
+.react-flow__pane.dragging {
+  cursor: grabbing !important;
+}
+
+// --------------------------------------------
+// 8. TABLES
+// --------------------------------------------
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th,
+td {
+  padding: $spacing-3 $spacing-4;
+  text-align: left;
+  border-bottom: $border-width-thin solid $color-border-light;
+}
+
+th {
+  font-weight: $font-weight-semibold;
+  background-color: $color-background-secondary;
+  color: $color-text-primary;
+}
+
+// --------------------------------------------
+// 9. UTILITY CLASSES
+// --------------------------------------------
+
+.container {
+  @include container;
+}
+
+.card {
+  @include card;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// Margin utilities
+@for $i from 0 through 10 {
+  .mt-#{$i} { margin-top: $spacing-4 * $i; }
+  .mb-#{$i} { margin-bottom: $spacing-4 * $i; }
+  .ml-#{$i} { margin-left: $spacing-4 * $i; }
+  .mr-#{$i} { margin-right: $spacing-4 * $i; }
+  .mx-#{$i} { 
+    margin-left: $spacing-4 * $i;
+    margin-right: $spacing-4 * $i;
+  }
+  .my-#{$i} { 
+    margin-top: $spacing-4 * $i;
+    margin-bottom: $spacing-4 * $i;
+  }
+}
+
+// Padding utilities
+@for $i from 0 through 10 {
+  .pt-#{$i} { padding-top: $spacing-4 * $i; }
+  .pb-#{$i} { padding-bottom: $spacing-4 * $i; }
+  .pl-#{$i} { padding-left: $spacing-4 * $i; }
+  .pr-#{$i} { padding-right: $spacing-4 * $i; }
+  .px-#{$i} { 
+    padding-left: $spacing-4 * $i;
+    padding-right: $spacing-4 * $i;
+  }
+  .py-#{$i} { 
+    padding-top: $spacing-4 * $i;
+    padding-bottom: $spacing-4 * $i;
+  }
+}
+
+// --------------------------------------------
+// 10. SCROLLBAR STYLING
+// --------------------------------------------
+
+* {
+  @include custom-scrollbar;
+}
+
+// --------------------------------------------
+// 11. FOCUS STYLES
+// --------------------------------------------
+
+:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}
+
+// --------------------------------------------
+// 12. SELECTION
+// --------------------------------------------
+
+::selection {
+  background-color: rgba($color-primary, 0.2);
+  color: $color-text-primary;
+}
+
+// --------------------------------------------
+// 13. PRINT STYLES
+// --------------------------------------------
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+
+  h2,
+  h3,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

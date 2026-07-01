@@ -1,0 +1,38 @@
+@use '../../../styles/tokens' as *;
+
+.pageHeader {
+  margin-bottom: $spacing-6;
+
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-2;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      color: $color-primary;
+      font-size: 20px;
+
+      svg {
+        font-size: 20px;
+      }
+    }
+
+    .category {
+      font-size: 14px;
+      font-weight: 500;
+      color: $color-text-secondary;
+      text-transform: capitalize;
+    }
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin: 0;
+    line-height: 1.3;
+  }
+}

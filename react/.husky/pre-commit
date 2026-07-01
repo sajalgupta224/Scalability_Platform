@@ -1,0 +1,10 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Check if SKIP_LINT environment variable is set
+if [ "$SKIP_LINT" = "true" ]; then
+  echo "⚠️  Skipping lint checks (SKIP_LINT=true)"
+  exit 0
+fi
+
+cd react && npx lint-staged --relative

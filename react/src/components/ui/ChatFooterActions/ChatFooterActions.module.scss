@@ -1,0 +1,23 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.actions {
+  display: flex;
+  gap: $spacing-1;
+  align-items: center;
+}
+
+.actionBtn {
+  color: #666;
+  padding: $spacing-1;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    color: #333;
+  }
+  
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}

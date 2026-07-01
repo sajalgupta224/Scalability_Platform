@@ -1,0 +1,63 @@
+@use '../../../../styles/tokens' as *;
+@use '../../../../styles/color.scss' as *;
+
+.dialogContent {
+  padding: 32px 48px;
+  min-height: 150px;
+  min-width: 700px;
+}
+
+.fieldRow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.fieldWrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.select {
+  :global(.MuiOutlinedInput-root) {
+    border-radius: 8px;
+    background-color: #ffffff;
+
+    fieldset {
+      border: 1px solid #d0d5dd;
+    }
+
+    &:hover fieldset {
+      border-color: #2563eb;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #2563eb;
+      border-width: 1px;
+    }
+
+    :global(.MuiSelect-select) {
+      padding: 12px 14px;
+    }
+  }
+}
+
+.confirmButton {
+  min-width: 120px;
+  height: 44px;
+  border-radius: 8px;
+  text-transform: none;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  background-color: #2563eb !important;
+  color: #fff !important;
+
+  &:hover {
+    background-color: #1d4ed8 !important;
+  }
+
+  &:disabled {
+    background-color: #e0e0e0 !important;
+    color: #a0a0a0 !important;
+  }
+}

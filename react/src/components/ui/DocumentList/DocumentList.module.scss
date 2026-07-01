@@ -1,0 +1,18 @@
+@use '../../../styles/tokens' as *;
+@use '../../../styles/mixins' as *;
+
+.docList {
+    margin-top: 20px;
+  
+    .docItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+  
+      button {
+        color: #1976d2;
+      }
+    }
+}

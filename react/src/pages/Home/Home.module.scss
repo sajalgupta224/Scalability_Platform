@@ -1,0 +1,125 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  padding: 40px;
+  background-color: #ffffff;
+  min-height: calc(100vh - 64px);
+}
+
+.wrappertitle {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+.homemain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  /* ✅ Center the whole content block so cards don't stick to left */
+  align-items: center;
+  justify-content: flex-start;
+
+  // padding: 40px 60px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+
+  /* ✅ Keep header centered like your earlier UI */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.title {
+  color: #000;
+  font-weight: 600;
+  font-size: 32px;
+  margin: 0 0 10px 0;
+}
+
+.tagline {
+  font-size: 20px;
+  font-weight: 400;
+  color: #555;
+  margin: 0;
+  max-width: 850px;
+}
+
+.cards {
+  /* ✅ This is the key: make cards sit side-by-side */
+  display: flex;
+  flex-wrap: wrap;
+
+  /* ✅ center the row */
+  justify-content: center;
+  align-items: stretch;
+
+  /* ✅ spacing between cards */
+  gap: 30px;
+
+  /* ✅ give enough width so it can form a row */
+  width: 100%;
+  // max-width: 1100px;
+  margin: 0 auto;
+
+  /* ✅ Force each Card to fixed width so they don't become 100% */
+  > * {
+    flex: 0 0 302px; /* fixed card width */
+    max-width: 302px;
+  }
+}
+
+/* ✅ Tablet */
+@media (max-width: 1024px) {
+  .homemain {
+    padding: 32px 24px;
+  }
+
+  .cards {
+    gap: 30px;
+    max-width: 760px;
+
+    > * {
+      flex: 0 0 302px;
+      max-width: 302px;
+    }
+  }
+}
+
+/* ✅ Mobile */
+@media (max-width: 640px) {
+  .wrapper {
+    padding: 20px;
+  }
+
+  .homemain {
+    padding: 24px 12px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+
+  .cards {
+    gap: 18px;
+    max-width: 100%;
+
+    > * {
+      flex: 1 1 100%;
+      max-width: 360px; /* keeps card nice on mobile */
+    }
+  }
+}
